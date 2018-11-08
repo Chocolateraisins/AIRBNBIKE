@@ -7,6 +7,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "Clearing all existing users"
+User.destroy_all if Rails.env == "DEVELOPMENT"
+
+puts "Creating 50 users"
+
 50.times do
   User.create!(
   email: Faker::Internet.email,
@@ -20,9 +25,9 @@ end
 
 puts "#{User.count} users created"
 
+puts "Clearing all existing bikes"
+Bike.destroy_all if Rails.env == "DEVELOPMENT"
 
-
-Bike.destroy_all if Rails.env = "DEVELOPMENT"
 puts "creating 100 new bikes"
 100.times do |bike|
   bike = Bike.new(
@@ -34,8 +39,8 @@ puts "creating 100 new bikes"
   )
   bike.save
 end
-puts "done creating 100 bikes"
+puts "Created 100 bikes"
 
-puts "seed done"
+puts "ExSeeded!!"
 
 
