@@ -1,0 +1,15 @@
+<%= simple_form_for(@user) do |f| %>
+
+<div id= "user-picture" class="picture-portrait">
+  <%= f.input :picture, placeholder: "type your url" %>
+</div>
+
+<div class="container"></div>
+<h2>Please share your details</h2>
+<%= f.input :first_name, placeholder: "type here" %>
+<%= f.input :last_name, placeholder: "type here" %>
+<%= f.input :phone_number, placeholder: "type here" %>
+
+<button type="button" class="btn-medium"><%= f.button :submit %></button>
+<% end %>
+</div>
