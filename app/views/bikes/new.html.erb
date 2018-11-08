@@ -1,2 +1,11 @@
+<div class="container">
 <h1>Bikes#new</h1>
-<p>Find me in app/views/bikes/new.html.erb</p>
+<h2>Add a new Bike</h2>
+<%= simple_form_for [@bike] do |f| %>
+  <%= f.input :category %>
+  <%= f.input :price, label: "Price per day"%>
+  <%= f.input :brand %>
+  <%= f.input :engine_size %>
+  <%= f.submit "list bike", class: "btn btn-primary" %>
+<% end %>
+</div>
