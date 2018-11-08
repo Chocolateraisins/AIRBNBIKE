@@ -1,6 +1,7 @@
 class BikesController < ApplicationController
 
   def show
+    @bike = Bike.find(params[:id])
   end
 
   def index
@@ -8,15 +9,14 @@ class BikesController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
     @bike = Bike.new
   end
 
   def create
-    @bike = Bike.new(review_params)
-    @bike.user = User.find(params[:user_id])
+    @bike = Bike.new(bike_params)
+    @bike.user = current_user
     if @bike.save
-      redirect_to restaurant_path(@bike.user)
+      redirect_to bike_path(@bike)
     else
       render :new
     end
@@ -29,6 +29,6 @@ class BikesController < ApplicationController
   private
 
   def bike_params
-    params.require(:bike).permit(:category, :price, :brand, :engine_size, :user_id)
+    params.require(:bike).permit(:category, :price, :brand, :engine_size)
   end
 end
