@@ -10,3 +10,4 @@ Rails.application.routes.draw do
   resources :bookings, except: [:new, :create]
 
 end
+
