@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
-  get 'bikes/new'
-  get 'bikes/edit'
-  get 'bikes/show'
+
   devise_for :users
   root to: 'pages#home'
 
-  resources :users do
-    resources :bikes
-    resources :bookings
+  resources :bikes do
+    resources :bookings, only: [:new, :create]
   end
+
+  resources :bookings, except: [:new, :create]
 
 end
