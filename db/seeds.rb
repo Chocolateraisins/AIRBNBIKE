@@ -41,6 +41,6 @@ puts "creating 100 new bikes"
 end
 puts "Created 100 bikes"
 
-puts "ExSeeded!!"
+puts "SuccSeeded!!"
 
 
