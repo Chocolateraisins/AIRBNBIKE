@@ -1,16 +1,10 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
 
 <div class="container">
 
-  <ul>
-    <% @booking.each do |booking| %>
-    <li><%= booking.start_date %></li>
-    <li><%= booking.end_date %></li>
-    <% end %>
+<%= @booking.bike.brand %>
+
+<!--
+    <li> Booking start date: <%= @booking.start_date %></li>
+    <li> Booking end date: <%= @booking.end_date %></li> -->
   </ul>
-
-
-  <%= link_to 'Add another ingredient', new_cocktail_dose_path(@cocktail), class: 'btn btn-primary btn-sm' %>
-  <%= link_to 'back', cocktails_path, class: 'btn btn-primary btn-sm' %>
 </div>
