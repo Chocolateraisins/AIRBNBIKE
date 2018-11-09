@@ -26,6 +26,9 @@
 .banner-content {
   margin-top: 100px;
   margin-bottom: 20px;
+  justify-content: center;
+  text-align: center;
+  vertical-align: center;
 }
 
 .button-container {
@@ -36,4 +39,9 @@
 
 #banner-title {
   font-family: 'Monoton', cursive;
+}
+
+.ml4 {
+  font-family: 'Monoton', cursive;
+  justify-content: center;
 }
