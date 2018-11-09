@@ -10,7 +10,7 @@
     <% @bikes.each do |bike| %>
     <%= link_to bike_path(bike) do %>
     <div class="col-sm-4 col-xs-12">
-      <div class="card">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "Bike1" %>');">
         <div class="card-description">
           <h2><%= bike.brand %></h2>
           <p>
@@ -35,6 +35,7 @@
   <div class="title-section text-center">
     <%= link_to 'New bike', new_bike_path, class: 'btn btn-primary ' %>
   </div>
+
 
 <!--
     <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
