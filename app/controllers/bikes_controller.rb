@@ -5,8 +5,14 @@ class BikesController < ApplicationController
   end
 
   def index
+    # if params.key? "filter"
+    #   @bikes = Bike.where(category: params[:filter])
+    # else
     @bikes = Bike.all
+    # end
+
   end
+
 
   def new
     @bike = Bike.new
