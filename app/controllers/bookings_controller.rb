@@ -1,16 +1,20 @@
 class BookingsController < ApplicationController
   def show
-    # if @booking.user == current_user
-      @booking = Booking.find(params[:id])
-    # else
-    #   redirect_to bikes_path
-    #   flash[:notice] = "Go F yourself :)"
-    # end
+    @booking = Booking.find(params[:id])
+    unless @booking.user == current_user
+      redirect_to root_path
+      flash[:notice] = "Log in to view your bookings"
+    end
   end
 
   def index
     @user = current_user
-    @bookings = @user.bookings
+    if @user == nil
+      redirect_to root_path
+      flash[:notice] = "Log in to view your bookings"
+    else
+      @bookings = @user.bookings
+    end
   end
 
   def new
@@ -23,6 +27,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.bike = @bike
+    @booking.status = "pending"
     if @booking.save
       redirect_to booking_path(@booking)
     else

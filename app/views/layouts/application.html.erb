@@ -15,7 +15,10 @@
 <body>
 
     <%= render 'shared/navbar' %>
-    <%= yield %>
+    <%= render 'shared/flashes' %>
+    <div class="padding-top-70">
+      <%= yield %>
+    </div>
     <%= javascript_include_tag "application" %> <!-- from app/assets/javascripts/application.js -->
     <%= javascript_pack_tag "application" %>    <!-- from app/javascript/packs/application.js -->
     <%= render 'shared/footer' %>

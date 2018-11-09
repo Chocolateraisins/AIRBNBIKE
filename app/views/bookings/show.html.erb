@@ -1,10 +1,17 @@
 
 <div class="container">
+  <ul>
+    <li> Start date: <%= @booking.start_date %> </li>
+    <li> End date: <%= @booking.end_date %> </li>
+    <li> Brand: <%= @booking.bike.brand %> </li>
+    <li> Engine Size: <%= @booking.bike.engine_size %> cc</li>
+    <li> Total price: € <%= rental_cost = (@booking.end_date - @booking.start_date).to_i * @booking.bike.price%></li>
+     <li> Booking Status: <%= @booking.status %></li>
+  </ul>
 
-<%= @booking.bike.brand %>
 
 <!--
     <li> Booking start date: <%= @booking.start_date %></li>
     <li> Booking end date: <%= @booking.end_date %></li> -->
-  </ul>
-</div>
+
+  </div>
