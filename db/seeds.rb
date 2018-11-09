@@ -10,7 +10,7 @@
 puts "Clearing all existing users"
 User.destroy_all if Rails.env == "DEVELOPMENT"
 
-puts "Creating 50 users"
+puts "Creating 10 users"
 
 10.times do
   User.create!(
@@ -28,7 +28,7 @@ puts "#{User.count} users created"
 puts "Clearing all existing bikes"
 Bike.destroy_all if Rails.env == "DEVELOPMENT"
 
-puts "creating 100 new bikes"
+puts "creating 50 new bikes"
 50.times do |bike|
   bike = Bike.new(
     category: Faker::Vehicle.drive_type, #for category
@@ -39,7 +39,7 @@ puts "creating 100 new bikes"
   )
   bike.save
 end
-puts "Created 100 bikes"
+puts "Created 50 bikes"
 
 puts "SuccSeeded!!"
 
