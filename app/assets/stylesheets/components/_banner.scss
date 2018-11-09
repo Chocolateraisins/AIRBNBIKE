@@ -9,7 +9,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: 'Monoton', cursive;
  }
 .banner h1 {
   font-size: 50px;
@@ -25,6 +24,7 @@
 }
 
 .banner-content {
+  margin-top: 100px;
   margin-bottom: 20px;
 }
 
@@ -32,4 +32,8 @@
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+#banner-title {
+  font-family: 'Monoton', cursive;
 }
