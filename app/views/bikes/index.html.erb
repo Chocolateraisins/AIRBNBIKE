@@ -1,0 +1,107 @@
+<div class="title-section text-center">
+  <h1>
+    All bikes
+  </h1>
+  <%= link_to 'New bike', new_bike_path, class: 'btn btn-primary ' %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% @bikes.each do |bike| %>
+    <%= link_to bike_path(bike) do %>
+    <div class="col-sm-4 col-xs-12">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+        <div class="card-description">
+          <h2><%= bike.brand %></h2>
+          <p>
+            Engine size <%= bike.engine_size %>
+          <p>
+        </div>
+        <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+        <div class="card-info">
+          <p>
+            <%= bike.category %>
+          </p>
+        </div>
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+
+  <div class="title-section text-center">
+    <%= link_to 'New bike', new_bike_path, class: 'btn btn-primary ' %>
+  </div>
+
+<!--
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+  <div class="card-category">Popular</div>
+  <div class="card-description">
+    <h2>Le Wagon Shanghai</h2>
+    <p>Very cool city, the best</p>
+  </div>
+</div>
+
+<a class="card-link" href="#" ></a> -->
+
+
+
+
+<!-- ActiveRecord::Schema.define(version: 2018_11_08_065710) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "bikes", force: :cascade do |t|
+    t.string "category"
+    t.integer "price"
+    t.string "brand"
+    t.integer "engine_size"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_bikes_on_user_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.string "delivery_address"
+    t.string "status"
+    t.bigint "user_id"
+    t.bigint "bike_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bike_id"], name: "index_bookings_on_bike_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.bigint "bike_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bike_id"], name: "index_images_on_bike_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "picture"
+    t.string "phone_number"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "bikes", "users"
+  add_foreign_key "bookings", "bikes"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "images", "bikes"
+  end -->
