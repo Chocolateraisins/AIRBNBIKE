@@ -12,7 +12,7 @@ User.destroy_all if Rails.env == "DEVELOPMENT"
 
 puts "Creating 50 users"
 
-50.times do
+10.times do
   User.create!(
   email: Faker::Internet.email,
   password: Faker::Internet.password,
@@ -29,7 +29,7 @@ puts "Clearing all existing bikes"
 Bike.destroy_all if Rails.env == "DEVELOPMENT"
 
 puts "creating 100 new bikes"
-100.times do |bike|
+50.times do |bike|
   bike = Bike.new(
     category: Faker::Vehicle.drive_type, #for category
     price: [5,10,15,25].sample, #for price
