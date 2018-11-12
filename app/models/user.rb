@@ -10,4 +10,8 @@ class User < ApplicationRecord
 
   validates :email, presence: true #, :first_name, :last_name, :phone_number
   validates :email, uniqueness: true #, :phone_number,
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
