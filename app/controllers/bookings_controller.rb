@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
-    unless @booking.user == current_user
+    unless @booking.user == current_user || @booking.bike.user == current_user
       redirect_to root_path
       flash[:notice] = "Log in to view your bookings"
     end
@@ -19,8 +19,21 @@ class BookingsController < ApplicationController
 
   def new
     unless current_user
-    redirect_to new_user_session_path
+      redirect_to new_user_session_path
       flash[:notice] = "Log in to book this bike"
+    end
+    @bike = Bike.find(params[:bike_id])
+    @booking = Booking.new
+  end
+
+  def edit
+    @booking = Booking.find(params[:booking_id])
+    @bike = @booking.bike
+    if current_user == nil
+      redirect_to new_user_session_path
+      flash[:notice] = "Log in to book this bike"
+    elsif  current_user != @booking.bike.user
+      flash[:notice] = "Only the owner of this bike can edit this booking"
     end
     @bike = Bike.find(params[:bike_id])
     @booking = Booking.new

@@ -6,8 +6,13 @@
     <li> End date: <%=booking.end_date  %></li>
     <li> Brand: <%= booking.bike.brand %> </li>
     <li> Engine Size :<%= booking.bike.engine_size %> cc</li>
-    <li> Total price: <%= rental_cost = (booking.end_date - booking.start_date).to_i * booking.bike.price%></li>
-   <p></p>
+    <li> Total price: € <%= rental_cost = (booking.end_date - booking.start_date).to_i * booking.bike.price%></li>
+    <% if booking.bike.user == current_user %>
+      <li> Booking Status: <%= @booking.status %> <%= link_to 'Change status', edit_booking_path(@booking)%> </li>
+    <% else  %>
+      <li> Booking Status: <%= booking.status %> </li>
+    <% end %>
+    <p></p>
     <% end %>
   </ul>
 </div>
