@@ -3,4 +3,5 @@ class Bike < ApplicationRecord
   has_many :images
   has_many :bookings
   validates :category, :price, :brand, :engine_size, presence: true
+  CATEGORIES = ['motorbike', 'scooter']
 end

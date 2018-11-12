@@ -12,10 +12,13 @@
 <div class="button-container">
   <!-- <a href="#" class="btn-medium">My scooter
   </a> -->
-  <%= link_to 'Show Bikes', bikes_path, class: 'btn-medium' %>
+  <%= link_to('Scooters', bikes_path(filter: "scooter"), class: 'btn-medium') %>
+  <%= link_to 'Motorbikes', bikes_path(filter: "motorbike"), class: 'btn-medium' %>
 
   </div>
 
 </div>
+
+
 
 
