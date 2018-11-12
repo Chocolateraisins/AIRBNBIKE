@@ -1,8 +1,8 @@
 <div class="container">
-  <h1>Your upcoming bookings</h1>
   <% if @bookings == 0 %>
    <p> You don't have any bookings yet. <%= link_to 'Book a bike', bikes_path %></p>
   <% else %>
+  <h1>Your upcoming bookings</h1>
     <% @bookings.each do |booking| %>
     <h3> <%= booking.bike.brand %> </h3>
     <ul>
@@ -16,10 +16,10 @@
     <% end %>
   <% end %>
 
-  <h1>Your booking requests</h1>
   <% if @user_bikes == 0 %>
    <p> You haven't listed any bikes yet. <%= link_to 'List your bike ', new_bike_path %></p>
   <% else %>
+  <h1>Your booking requests</h1>
     <% @user_bikes.each do |bike| %>
     <h3><%= bike.brand %></h3>
     <% bike.bookings.each do |booking| %>
