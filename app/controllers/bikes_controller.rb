@@ -2,6 +2,7 @@ class BikesController < ApplicationController
 
   def show
     @bike = Bike.find(params[:id])
+    @images = @bike.images.all
   end
 
   def index
@@ -19,6 +20,7 @@ class BikesController < ApplicationController
 
   def new
     @bike = Bike.new
+    # @image = @bike.images
   end
 
   def create
@@ -29,7 +31,24 @@ class BikesController < ApplicationController
     else
       render :new
     end
+
+  # respond_to do |format|
+  #    if @bike.save
+  #      params[:images]['avatar'].each do |a|
+  #         @image = @bike.images.create!(:avatar => a)
+  #      end
+  #      format.html { redirect_to @bike, notice: 'Bike was successfully created.' }
+  #    else
+  #      format.html { render action: 'new' }
+  #    end
+  #  end
+
+
+
   end
+
+
+
 
 
   def edit
@@ -38,6 +57,7 @@ class BikesController < ApplicationController
   private
 
   def bike_params
-    params.require(:bike).permit(:category, :price, :brand, :engine_size)
+    params.require(:bike).permit(:category, :price, :brand, :engine_size, :image, :remove_image, :image_cache, :remote_image_url, attachments: [])
+
   end
 end

@@ -13,8 +13,6 @@ gem 'rails', '5.2.1'
 gem 'redis'
 
 gem 'dotenv-rails', groups: [:development, :test]
-gem 'cloudinary'
-gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'carrierwave', '~> 1.2'
 
