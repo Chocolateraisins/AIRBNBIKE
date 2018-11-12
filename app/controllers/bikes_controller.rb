@@ -5,8 +5,17 @@ class BikesController < ApplicationController
   end
 
   def index
-    @bikes = Bike.all
+    if params[:filter].present?
+      @bikes = Bike.where(category: params[:filter])
+    # elsif params[:filter] == "motorbike"
+    #   @bikes = Bike.where(category: "motorbike")
+  # elsif params[:squeeze].integer?
+  #    @bikes = Bike.where(price: params[:squeeze])
+    else
+      @bikes = Bike.all
+    end
   end
+
 
   def new
     @bike = Bike.new
