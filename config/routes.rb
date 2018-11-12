@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  # get 'users/edit'
+  # get 'users/update'
   devise_for :users
   root to: 'pages#home'
 
@@ -9,6 +11,8 @@ Rails.application.routes.draw do
   end
 
   resources :bookings, except: [:new, :create]
+
+  resources :users, only: [:show, :index, :edit, :update]
 
 end
 

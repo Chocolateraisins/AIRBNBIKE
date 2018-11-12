@@ -12,11 +12,13 @@
         <!-- Profile picture with dropdown list -->
         <div class="navbar-wagon-item">
           <div class="dropdown">
-            <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+            <%= cl_image_tag current_user.photo, alt: "user avatr", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", data: { toggle: 'dropdown' } %>
+            <!-- <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown"> -->
             <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-              <li> <%= link_to edit_user_registration_path, method: :get do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".edit", default: "Edit details") %>
-                <% end %>
+              <li> <%= link_to 'edit profile', edit_user_path(current_user) %>
+              </li>
+              <li>
+                <i class="fa fa-sign-out"></i>  <%#= t(".edit", default: "Edit details") %>
                 </li>
               <li> <%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
