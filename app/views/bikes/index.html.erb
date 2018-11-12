@@ -5,6 +5,15 @@
   <%= link_to 'New bike', new_bike_path, class: 'btn btn-primary ' %>
 </div>
 
+<!--   filter by category -->
+<form action="/bikes">
+  <select name="filter">
+    <% Bike::CATEGORIES.each do |option| %>
+      <option <%= 'selected' if params[:filter] == option %> value="<%= option %>"><%= option.capitalize %></option>
+    <% end %>
+  </select>
+  <input type="submit" value="Search">
+</form>
 
 
 <div class="container">
