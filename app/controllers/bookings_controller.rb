@@ -18,6 +18,10 @@ class BookingsController < ApplicationController
   end
 
   def new
+    unless current_user
+    redirect_to new_user_session_path
+      flash[:notice] = "Log in to book this bike"
+    end
     @bike = Bike.find(params[:bike_id])
     @booking = Booking.new
   end
