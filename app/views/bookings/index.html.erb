@@ -1,19 +1,35 @@
 <div class="container">
-  <h3>Your upcoming bookings</h3>
-  <ul>
+  <h1>Your upcoming bookings</h1>
+  <% if @bookings == 0 %>
+   <p> You don't have any bookings yet. <%= link_to 'Book a bike', bikes_path %></p>
+  <% else %>
     <% @bookings.each do |booking| %>
-    <li> Start date: <%= booking.start_date %> </li>
-    <li> End date: <%=booking.end_date  %></li>
-    <li> Brand: <%= booking.bike.brand %> </li>
-    <li> Engine Size :<%= booking.bike.engine_size %> cc</li>
-    <li> Total price: € <%= rental_cost = (booking.end_date - booking.start_date).to_i * booking.bike.price%></li>
-    <% if booking.bike.user == current_user %>
-      <li> Booking Status: <%= @booking.status %> <%= link_to 'Change status', edit_booking_path(@booking)%> </li>
-    <% else  %>
-      <li> Booking Status: <%= booking.status %> </li>
+    <h3> <%= booking.bike.brand %> </h3>
+    <ul>
+      <li> Start date: <%= booking.start_date %> </li>
+      <li> End date: <%=booking.end_date  %></li>
+      <li> Delivery Address: <%=booking.delivery_address  %></li>
+      <li> Engine Size :<%= booking.bike.engine_size %> cc</li>
+      <li> Total price: € <%= rental_cost = (booking.end_date - booking.start_date).to_i * booking.bike.price%></li>
+      <li> Booking Status: <%= booking.status %></li>
+    </ul>
     <% end %>
-    <p></p>
-    <% end %>
-  </ul>
-</div>
+  <% end %>
 
+  <h1>Your booking requests</h1>
+  <% if @user_bikes == 0 %>
+   <p> You haven't listed any bikes yet. <%= link_to 'List your bike ', new_bike_path %></p>
+  <% else %>
+    <% @user_bikes.each do |bike| %>
+    <h3><%= bike.brand %></h3>
+    <% bike.bookings.each do |booking| %>
+      <li> Start date: <%= booking.start_date %> </li>
+      <li> End date: <%=booking.end_date  %></li>
+      <li> Delivery Address: <%=booking.delivery_address  %></li>
+      <li> Engine Size :<%= booking.bike.engine_size %> cc</li>
+      <li> Total price: € <%= rental_cost = (booking.end_date - booking.start_date).to_i * booking.bike.price%></li>
+      <li> Booking Status: <%= booking.status %> <%= link_to 'Change status', edit_booking_path(booking)%></li>
+      <p>-----------</p>
+    <% end %>
+  <% end %>
+  <% end %>
