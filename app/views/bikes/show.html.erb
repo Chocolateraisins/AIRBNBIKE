@@ -1,13 +1,13 @@
-<div class="container">
-<div class="show_flex">
+<div class="container" style = "height:90vh">
+  <div class="show_flex">
 
-  <div class="image_flex_item">
-    <%= cl_image_tag("Bike1",
-    width: 400, height: 300, crop: :fill) %>
-  </div>
+    <div class="image_flex_item">
+      <%= cl_image_tag("Bike1",
+      width: 400, height: 300, crop: :fill) %>
+    </div>
 
-  <div class="info_flex_item">
-    <ul class="list-group">
+    <div class="info_flex_item">
+      <ul class="list-group">
         <li class="list-group-item d-flex justify-content-between align-items-center">
           Brand
           <span class="badge badge-primary badge-pill"><%= @bike.brand %></span>
@@ -24,16 +24,16 @@
         </li>
 
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            Bike owner
+          Bike owner
           <span class="badge badge-primary badge-pill"><%= @bike.user.email %></span>
-          </li>
-  </ul>
+        </li>
+      </ul>
 
-    <%= link_to 'Back to bikes', bikes_path, class: 'btn btn-primary ' %>
-    <%= link_to 'Book this bike', new_bike_booking_path(@bike), class: 'btn btn-danger ' %>
+      <%= link_to 'Back to bikes', bikes_path, class: 'btn btn-primary ' %>
+      <%= link_to 'Book this bike', new_bike_booking_path(@bike), class: 'btn btn-danger ' %>
+    </div>
+
   </div>
-
-</div>
 </div>
 
 
