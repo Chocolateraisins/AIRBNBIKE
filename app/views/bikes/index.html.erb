@@ -7,14 +7,46 @@
 
 <!--   filter by category -->
 <form action="/bikes">
-  <select name="filter">
-    <% Bike::CATEGORIES.each do |option| %>
-      <option <%= 'selected' if params[:filter] == option %> value="<%= option %>"><%= option.capitalize %></option>
+  <select name="filter_category">
+    <option value="" disabled selected>Select your vehicle</option>
+    <option value="" selected>Any type of vehicle</option>
+    <% @categories.each do |option| %>
+    <option <%= 'selected' if params[:filter_category] == option %> value="<%= option %>"><%= option.capitalize %></option>
     <% end %>
+  </select>
+  <!--   filter by brand -->
+    <select name="filter_brand" >
+      <option value="" disabled selected>Select your brand</option>
+      <option value="" selected>Any brand</option>
+    <% @brands.each do |option| %>
+      <option <%= 'selected' if params[:filter_brand] == option %> value="<%= option %>"><%= option.capitalize %></option>
+    <% end %>
+  </select>
+  <!--   filter by engine -->
+  <select name="filter_engine" >
+    <option value="" disabled selected>Select your engine</option>
+    <option value="" selected>Any engine size</option>
+    <% @engines.each do |option| %>
+      <option <%= 'selected' if params[:filter_engine] == option.to_s %> value="<%= option %>"><%= option %></option>
+    <% end %>
+  </select>
+  <!--   filter by price -->
+  <select name="filter_price" >
+    <option value="" disabled selected>Select your price</option>
+    <option value="" selected>Any price</option>
+          <optgroup label=" <= to 15">
+          <% @prices.select {|x| x < 15}.each do |option| %>
+            <option <% 'selected' if params[:filter_price].to_i <= 15 %> value="<%= option %>"> <%= option %></option>
+          <% end %>
+           </optgroup>
+          <optgroup label=" > to 15">
+          <% @prices.reject {|x| x  < 15}.each do |option| %>
+            <option <% 'selected' if params[:filter_price].to_i > 15 %> value="<%= option %>"><%= option %></option>
+          <% end %>
+          </optgroup>
   </select>
   <input type="submit" value="Search">
 </form>
-
 
 <div class="container">
   <div class="row">
