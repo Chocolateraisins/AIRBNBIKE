@@ -5,15 +5,25 @@ class BikesController < ApplicationController
   end
 
   def index
-    if params[:filter].present?
-      @bikes = Bike.where(category: params[:filter])
-    # elsif params[:filter] == "motorbike"
-    #   @bikes = Bike.where(category: "motorbike")
-  # elsif params[:squeeze].integer?
-  #    @bikes = Bike.where(price: params[:squeeze])
-    else
-      @bikes = Bike.all
-    end
+    @categories = Bike.all.pluck(:category).uniq
+    @brands = Bike.all.pluck(:brand).uniq
+    @engines = Bike.all.pluck(:engine_size).uniq
+    @prices = Bike.all.pluck(:price).uniq
+    @bikes = Bike.all
+    @bikes = @bikes.where(category: params[:filter_category]) if params[:filter_category].present?
+    @bikes = @bikes.where(brand: params[:filter_brand]) if params[:filter_brand].present?
+    @bikes = @bikes.where(engine_size: params[:filter_engine]) if params[:filter_engine].present?
+    @bikes = @bikes.where(price: params[:filter_price]) if params[:filter_price].present?
+
+  #   if params[:filter].present?
+  #     @bikes = Bike.where(category: params[:filter])
+  #   # elsif params[:filter] == "motorbike"
+  #   #   @bikes = Bike.where(category: "motorbike")
+  # # elsif params[:squeeze].integer?
+  # #    @bikes = Bike.where(price: params[:squeeze])
+  #   else
+  #     @bikes = Bike.all
+  #   end
   end
 
 

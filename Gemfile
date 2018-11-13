@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.4.4'
 
+gem 'pg_search'
 gem 'cloudinary'
 gem 'devise'
 gem 'faker'
