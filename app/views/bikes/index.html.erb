@@ -1,13 +1,13 @@
 <div class="title-section text-center">
   <h1>
-    All bikes
+    Check out our bikes selection!
   </h1>
-  <%= link_to 'New bike', new_bike_path, class: 'btn btn-primary ' %>
+  <%= link_to 'New bike', new_bike_path, class: 'btn btn-medium ' %>
 </div>
 
 <div class="container">
 <!--   filter by category -->
-<form action="/bikes">
+<form action="/bikes" class="index-filter custom-dropdown text-center">
   <select name="filter_category">
     <option value="" disabled selected>Select your vehicle</option>
     <option value="" selected>Any type of vehicle</option>
@@ -48,6 +48,10 @@
   </select>
   <input type="submit" value="Search">
 </form>
+
+<br>
+<br>
+<br>
 
   <div class="row">
     <% @bikes.each do |bike| %>
