@@ -19,8 +19,7 @@ puts "Creating 10 users"
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   phone_number: Faker::PhoneNumber.phone_number,
-  photo: "https://loremflickr.com/g/320/240/portrait/all",
-  picture: "https://loremflickr.com/g/320/240/portrait/all"
+  remote_photo_url: "https://loremflickr.com/g/320/240/portrait/all"
   )
 end
 

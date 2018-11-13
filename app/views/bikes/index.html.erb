@@ -65,7 +65,7 @@
             <% if bike.user.photo.file == nil %>
             <div class="default-avatar"></div>
             <% else %>
-            <%= image_path bike.user.photo, class: "mini-avatar-user" %>
+            <%= cl_image_tag bike.user.photo, class: "mini-avatar-user" %>
             <% end %>
             <% end %>
             <!-- <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
