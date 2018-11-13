@@ -1,6 +1,5 @@
 <div class="container">
-
-  <% if @bookings == 0 %>
+  <% if @bookings.length == 0 %>
    <p> You don't have any bookings yet. <%= link_to 'Book a bike', bikes_path %></p>
   <% else %>
   <h1>Your upcoming bookings</h1>
@@ -17,7 +16,7 @@
     <% end %>
   <% end %>
 
-  <% if @user_bikes == 0 %>
+  <% if @user_bikes.length == 0 %>
    <p> You haven't listed any bikes yet. <%= link_to 'List your bike ', new_bike_path %></p>
   <% else %>
   <h1>Your booking requests</h1>
@@ -34,5 +33,5 @@
     <% end %>
   <% end %>
   <% end %>
-  
+
 </div>

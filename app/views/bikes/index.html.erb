@@ -58,26 +58,33 @@
           <h2><%= bike.brand %></h2>
           <p>
             Engine size <%= bike.engine_size %>
-          <p>
+            <p>
+            </div>
+            <%= link_to user_path(bike.user) do %>
+            <% if bike.user.photo.file == nil %>
+            <div class="default-avatar"></div>
+            <% else %>
+            <%= cl_image_tag bike.user.photo, class: "mini-avatar-user" %>
+            <% end %>
+            <% end %>
+            <!-- <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
+            <div class="card-info">
+              <p>
+                <%= bike.category %>
+              </p>
+            </div>
+            <div class="card-footer">
+            </div>
+          </div>
         </div>
-        <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-        <div class="card-info">
-          <p>
-            <%= bike.category %>
-          </p>
-        </div>
-        <div class="card-footer">
-        </div>
+        <% end %>
+        <% end %>
       </div>
     </div>
-    <% end %>
-    <% end %>
-  </div>
-</div>
 
-  <div class="title-section text-center">
-    <%= link_to 'New bike', new_bike_path, class: 'btn btn-primary ' %>
-  </div>
+    <div class="title-section text-center">
+      <%= link_to 'New bike', new_bike_path, class: 'btn btn-primary ' %>
+    </div>
 
 
 <!--
