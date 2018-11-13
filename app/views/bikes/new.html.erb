@@ -1,11 +1,25 @@
-<div class="container">
-<h1>Bikes#new</h1>
-<h2>Add a new Bike</h2>
-<%= simple_form_for [@bike] do |f| %>
-  <%= f.input :category, collection: ['Scooter','Motorbike']%>
-  <%= f.input :price, label: "Price per day"%>
-  <%= f.input :brand, collection: ['Honda','Yamaha','BMW','Scoopy','Leos']%>
-  <%= f.input :engine_size %>
-  <%= f.submit "list bike", class: "btn btn-medium" %>
-<% end %>
+<div class="banner" style="background-image: url('https://res.cloudinary.com/dxzgio39l/image/upload/o_65/v1542087044/new_bike.jpg');">
+
+  <div class="banner-content">
+    <h2>Add a new bike</h2>
+
+    <%= simple_form_for [@bike] do |f| %>
+      <div class="form-inputs">
+      <%= f.input :category, collection: ['Scooter','Motorbike']%>
+      <%= f.input :price, label: "Price per day"%>
+      <%= f.input :brand, collection: ['Honda','Yamaha','BMW','Scoopy','Leos']%>
+      <%= f.input :engine_size %>
+         <div class="form-actions btn btn-medium">
+          <%= f.button :submit, "List bike" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
+
+
+
+
+
+
+
