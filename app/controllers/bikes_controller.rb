@@ -34,13 +34,21 @@ class BikesController < ApplicationController
   def create
     @bike = Bike.new(bike_params)
     @bike.user = current_user
-    if @bike.save
+    if @bike.user == nil
+      redirect_to root_path
+      flash[:notice] = "Log in to list a new bike"
+    elsif
+      @bike.save
       redirect_to bike_path(@bike)
     else
       render :new
     end
   end
 
+# @user = current_user
+#     if @user == nil
+#       redirect_to root_path
+#       flash[:notice] = "Log in to view your bookings"
 
   def edit
   end

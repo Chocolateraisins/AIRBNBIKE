@@ -19,6 +19,7 @@ puts "Creating 10 users"
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   phone_number: Faker::PhoneNumber.phone_number,
+  photo: "https://loremflickr.com/g/320/240/portrait/all",
   picture: "https://loremflickr.com/g/320/240/portrait/all"
   )
 end
@@ -33,7 +34,7 @@ puts "creating 50 new bikes"
   bike = Bike.new(
     category: ["scooter", "motorbike"].sample, #for category
     price: [5,10,15,25].sample, #for price
-    brand: Faker::Vehicle.make, #for brand
+    brand: ['Honda','Yamaha','BMW','Scoopy','Leos'].sample, #for brand
     engine_size: [50,100,150,250].sample, #for engine_size
     user: User.all.sample
   )

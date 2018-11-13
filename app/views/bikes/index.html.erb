@@ -5,6 +5,7 @@
   <%= link_to 'New bike', new_bike_path, class: 'btn btn-primary ' %>
 </div>
 
+<div class="container">
 <!--   filter by category -->
 <form action="/bikes">
   <select name="filter_category">
@@ -48,12 +49,11 @@
   <input type="submit" value="Search">
 </form>
 
-<div class="container">
   <div class="row">
     <% @bikes.each do |bike| %>
     <%= link_to bike_path(bike) do %>
     <div class="col-sm-4 col-xs-12">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path "Bike3" %>');">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path "Bike1" %>');">
         <div class="card-description">
           <h2><%= bike.brand %></h2>
           <p>
@@ -64,7 +64,7 @@
             <% if bike.user.photo.file == nil %>
             <div class="default-avatar"></div>
             <% else %>
-            <%= cl_image_tag bike.user.photo, class: "mini-avatar-user" %>
+            <%= image_path bike.user.photo, class: "mini-avatar-user" %>
             <% end %>
             <% end %>
             <!-- <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->

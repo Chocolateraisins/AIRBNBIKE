@@ -1,21 +1,27 @@
 
 <div class="container">
-  <ul>
-    <li> Start date: <%= @booking.start_date %> </li>
-    <li> End date: <%= @booking.end_date %> </li>
-    <li> Brand: <%= @booking.bike.brand %> </li>
-    <li> Engine Size: <%= @booking.bike.engine_size %> cc</li>
-    <li> Total price: € <%= rental_cost = (@booking.end_date - @booking.start_date).to_i * @booking.bike.price%></li>
-    <% if @booking.bike.user == current_user %>
-    <li> Booking Status: <%= @booking.status %> <%= link_to 'Change status', edit_booking_path(@booking)%> </li>
-    <% else  %>
-    <li> Booking Status: <%= @booking.status %> </li>
-    <% end %>
-  </ul>
+  <div class="row">
 
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path "Bike1" %>');">
+      </div>
 
-<!--
-    <li> Booking start date: <%= @booking.start_date %></li>
-    <li> Booking end date: <%= @booking.end_date %></li> -->
-
+      <div>
+        <ul>
+          <li> Start date: <%= @booking.start_date %> </li>
+          <li> End date: <%= @booking.end_date %> </li>
+          <li> Brand: <%= @booking.bike.brand %> </li>
+          <li> Engine Size: <%= @booking.bike.engine_size %> cc</li>
+          <li> Total price: € <%= rental_cost = (@booking.end_date - @booking.start_date).to_i * @booking.bike.price%></li>
+          <% if @booking.bike.user == current_user %>
+          <li> Booking Status: <%= @booking.status %> <%= link_to 'Change status', edit_booking_path(@booking)%> </li>
+          <% else  %>
+          <li> Booking Status: <%= @booking.status %> </li>
+          <% end %>
+        </ul>
+      </div>
+</div>
   </div>
+
+
+
+
