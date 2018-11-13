@@ -1,9 +1,10 @@
 <div class="show_flex">
+
   <div class="image_flex_item">
     <%= cl_image_tag("Bike3",
     width: 400, height: 300, crop: :fill) %>
-
   </div>
+
   <div class="info_flex_item">
     <h2>Brand:
       <%= @bike.brand %>
@@ -22,6 +23,7 @@
     <%= link_to 'Back to bikes', bikes_path, class: 'btn btn-primary ' %>
     <%= link_to 'Book this bike', new_bike_booking_path(@bike), class: 'btn btn-danger ' %>
   </div>
+
 </div>
 
 
