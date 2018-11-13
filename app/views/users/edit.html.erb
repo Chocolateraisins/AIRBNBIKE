@@ -1,9 +1,16 @@
-<!-- app/views/articles/_form.html.erb -->
-<%= simple_form_for(@user) do |f| %>
-  <!-- [...] -->
-  <%= f.input :photo %>
-  <%= f.input :first_name %>
-  <%= f.input :photo_cache, as: :hidden %>
-  <%= f.submit 'update profile' %>
-<% end %>
+<div class="banner" style="background-image: url('https://res.cloudinary.com/dxzgio39l/image/upload/v1541740869/Banner.jpg');">
 
+  <div class="banner-content">
+    <h2>Edit my profile</h2>
+
+    <%= simple_form_for(@user) do |f| %>
+      <!-- [...] -->
+      <%= f.input :photo %>
+      <%= f.input :first_name %>
+      <%= f.input :photo_cache, as: :hidden %>
+      <div class="form-actions btn btn-medium">
+          <%= f.button :submit, "Update" %>
+        </div>
+    <% end %>
+  </div>
+</div>

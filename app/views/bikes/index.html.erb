@@ -1,53 +1,54 @@
-<div class="title-section text-center">
-  <h1>
-    All bikes
-  </h1>
-  <%= link_to 'New bike', new_bike_path, class: 'btn btn-primary ' %>
+<div class="small-banner" style="background-image: url('https://res.cloudinary.com/dxzgio39l/image/upload/v1542093054/shop.jpg');">
+    <div class="container">
+      <!--   filter by category -->
+      <form action="/bikes" class="index-filter custom-dropdown text-center">
+        <select name="filter_category">
+          <option value="" disabled selected>Select your vehicle</option>
+          <option value="" selected>Any type of vehicle</option>
+          <% @categories.each do |option| %>
+          <option <%= 'selected' if params[:filter_category] == option %> value="<%= option %>"><%= option.capitalize %></option>
+          <% end %>
+        </select>
+        <!--   filter by brand -->
+        <select name="filter_brand" >
+          <option value="" disabled selected>Select your brand</option>
+          <option value="" selected>Any brand</option>
+          <% @brands.each do |option| %>
+          <option <%= 'selected' if params[:filter_brand] == option %> value="<%= option %>"><%= option.capitalize %></option>
+          <% end %>
+        </select>
+        <!--   filter by engine -->
+        <select name="filter_engine" >
+          <option value="" disabled selected>Select your engine</option>
+          <option value="" selected>Any engine size</option>
+          <% @engines.each do |option| %>
+          <option <%= 'selected' if params[:filter_engine] == option.to_s %> value="<%= option %>"><%= option %></option>
+          <% end %>
+        </select>
+        <!--   filter by price -->
+      <select name="filter_price" >
+        <option value="" disabled selected>Select your price</option>
+        <option value="" selected>Any price</option>
+              <optgroup label=" <= to 15">
+              <% @prices.select {|x| x < 15}.each do |option| %>
+                <option <% 'selected' if params[:filter_price].to_i <= 15 %> value="<%= option %>"> <%= option %></option>
+              <% end %>
+               </optgroup>
+              <optgroup label=" > to 15">
+              <% @prices.reject {|x| x  < 15}.each do |option| %>
+                <option <% 'selected' if params[:filter_price].to_i > 15 %> value="<%= option %>"><%= option %></option>
+              <% end %>
+              </optgroup>
+      </select>
+        <input type="submit" value="Search">
+      </form>
+    <div  class=" text-center" id ="adjustment-margin" >
+      <%= link_to 'New bike', new_bike_path, class: 'btn btn-medium ' %>
+    </div>
+  </div>
 </div>
 
-<div class="container">
-<!--   filter by category -->
-<form action="/bikes">
-  <select name="filter_category">
-    <option value="" disabled selected>Select your vehicle</option>
-    <option value="" selected>Any type of vehicle</option>
-    <% @categories.each do |option| %>
-    <option <%= 'selected' if params[:filter_category] == option %> value="<%= option %>"><%= option.capitalize %></option>
-    <% end %>
-  </select>
-  <!--   filter by brand -->
-    <select name="filter_brand" >
-      <option value="" disabled selected>Select your brand</option>
-      <option value="" selected>Any brand</option>
-    <% @brands.each do |option| %>
-      <option <%= 'selected' if params[:filter_brand] == option %> value="<%= option %>"><%= option.capitalize %></option>
-    <% end %>
-  </select>
-  <!--   filter by engine -->
-  <select name="filter_engine" >
-    <option value="" disabled selected>Select your engine</option>
-    <option value="" selected>Any engine size</option>
-    <% @engines.each do |option| %>
-      <option <%= 'selected' if params[:filter_engine] == option.to_s %> value="<%= option %>"><%= option %></option>
-    <% end %>
-  </select>
-  <!--   filter by price -->
-  <select name="filter_price" >
-    <option value="" disabled selected>Select your price</option>
-    <option value="" selected>Any price</option>
-          <optgroup label=" <= to 15">
-          <% @prices.select {|x| x < 15}.each do |option| %>
-            <option <% 'selected' if params[:filter_price].to_i <= 15 %> value="<%= option %>"> <%= option %></option>
-          <% end %>
-           </optgroup>
-          <optgroup label=" > to 15">
-          <% @prices.reject {|x| x  < 15}.each do |option| %>
-            <option <% 'selected' if params[:filter_price].to_i > 15 %> value="<%= option %>"><%= option %></option>
-          <% end %>
-          </optgroup>
-  </select>
-  <input type="submit" value="Search">
-</form>
+
 
   <div class="row">
     <% @bikes.each do |bike| %>
@@ -81,78 +82,7 @@
         <% end %>
       </div>
     </div>
-
-    <div class="title-section text-center">
-      <%= link_to 'New bike', new_bike_path, class: 'btn btn-primary ' %>
-    </div>
-
-
-<!--
-    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
-  <div class="card-category">Popular</div>
-  <div class="card-description">
-    <h2>Le Wagon Shanghai</h2>
-    <p>Very cool city, the best</p>
-  </div>
+</div>
 </div>
 
-<a class="card-link" href="#" ></a> -->
 
-
-
-
-<!-- ActiveRecord::Schema.define(version: 2018_11_08_065710) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "bikes", force: :cascade do |t|
-    t.string "category"
-    t.integer "price"
-    t.string "brand"
-    t.integer "engine_size"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_bikes_on_user_id"
-  end
-
-  create_table "bookings", force: :cascade do |t|
-    t.date "start_date"
-    t.date "end_date"
-    t.string "delivery_address"
-    t.string "status"
-    t.bigint "user_id"
-    t.bigint "bike_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["bike_id"], name: "index_bookings_on_bike_id"
-    t.index ["user_id"], name: "index_bookings_on_user_id"
-  end
-
-  create_table "images", force: :cascade do |t|
-    t.bigint "bike_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["bike_id"], name: "index_images_on_bike_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "picture"
-    t.string "phone_number"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  add_foreign_key "bikes", "users"
-  add_foreign_key "bookings", "bikes"
-  add_foreign_key "bookings", "users"
-  add_foreign_key "images", "bikes"
-  end -->
