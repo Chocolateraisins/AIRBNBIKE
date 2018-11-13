@@ -1,33 +1,23 @@
-<div class="show_flex">
-  <div class="image_flex_item">
+<div class="container">
+  <div class="show_flex">
+    <div class="image_flex_item">
 
-
-<% if @user.photo.file == nil %>
-            <div class="default-user-avatar"></div>
-            <% else %>
-    <%= cl_image_tag @user.photo, alt: "user avatar", class: "user_avatar" %>
-
-            <% end %>
-
-
-
-  </div>
-  <div class="info_flex_item">
-    <h2>Name:
-      <%= @user.full_name %>
-    </h2>
-    <p>Email:
-      <%= @user.email %>
-    </p>
-
-    <p>
-      Bikes owner:
-      <%#= @bike.user.email %>
-    </p>
-    <%#= link_to 'Back to bikes', bikes_path, class: 'btn btn-primary ' %>
-    <%#= link_to 'Book this bike', new_bike_booking_path(@bike), class: 'btn btn-danger ' %>
-  </div>
-
-</div>
+      <% if @user.photo.file == nil %>
+      <div class="default-user-avatar"></div>
+      <% else %>
+      <%= cl_image_tag @user.photo, alt: "user avatar", class: "user_avatar" %>
+      <% end %>
+    </div>
+    <div class="info_flex_item">
+      <h2>
+        <%= @user.full_name %>
+      </h2>
+      <p>
+        <%= @user.email %>
+      </p>
   <%= link_to 'Back to bikes', bikes_path, class: 'btn btn-primary ' %>
-
+      <%#= link_to 'Back to bikes', bikes_path, class: 'btn btn-primary ' %>
+      <%#= link_to 'Book this bike', new_bike_booking_path(@bike), class: 'btn btn-danger ' %>
+    </div>
+  </div>
+</div>
