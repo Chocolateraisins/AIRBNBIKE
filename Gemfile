@@ -5,7 +5,7 @@ gem 'pg_search'
 gem 'cloudinary'
 gem 'devise'
 gem 'faker'
-
+gem 'rest-client', '>= 2.0.2'
 gem 'bootsnap', require: false
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
