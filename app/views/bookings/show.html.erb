@@ -3,25 +3,59 @@
   <div class="row">
 
     <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path "Bike1" %>');">
-      </div>
+    </div>
 
-      <div>
-        <ul>
-          <li> Start date: <%= @booking.start_date %> </li>
-          <li> End date: <%= @booking.end_date %> </li>
-          <li> Brand: <%= @booking.bike.brand %> </li>
-          <li> Engine Size: <%= @booking.bike.engine_size %> cc</li>
-          <li> Total price: € <%= rental_cost = (@booking.end_date - @booking.start_date).to_i * @booking.bike.price%></li>
-          <% if @booking.bike.user == current_user %>
-          <li> Booking Status: <%= @booking.status %> <%= link_to 'Change status', edit_booking_path(@booking)%> </li>
-          <% else  %>
-          <li> Booking Status: <%= @booking.status %> </li>
-          <% end %>
-        </ul>
-      </div>
-</div>
+    <div>
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Start date
+          <span class="badge badge-primary badge-pill"><%= @booking.start_date %></span>
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          End date
+          <span class="badge badge-primary badge-pill"><%= @booking.end_date %></span>
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Brand
+          <span class="badge badge-primary badge-pill"><%= @booking.bike.brand %></span>
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Engine Size
+          <span class="badge badge-primary badge-pill"><%= @booking.bike.engine_size %> cc </span>
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Total price
+          <span class="badge badge-primary badge-pill">€ <%=rental_cost = (@booking.end_date - @booking.start_date).to_i * @booking.bike.price%></span>
+        </li>
+
+        <% if @booking.bike.user == current_user %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Booking Status
+            <span class="badge badge-primary badge-pill"><%= @booking.status %> <%= link_to 'Change status', edit_booking_path(@booking)%></span>
+          </li>
+        <% else  %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Booking Status
+            <span class="badge badge-primary badge-pill"><%= @booking.status %></span>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
+  <div class="text-center">
+  <%= link_to 'See all bookings', bookings_path, class:"btn btn-primary"%>
+  </div>
+</div>
 
 
+<!-- <li class="list-group-item d-flex justify-content-between align-items-center">
+  Morbi leo risus
+  <span class="badge badge-primary badge-pill">1</span>
+</li>
+</ul> -->
 
 

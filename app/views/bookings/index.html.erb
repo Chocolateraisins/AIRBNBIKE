@@ -4,15 +4,44 @@
   <% else %>
   <h1>Your upcoming bookings</h1>
     <% @bookings.each do |booking| %>
-    <h3> <%= booking.bike.brand %> </h3>
-    <ul>
-      <li> Start date: <%= booking.start_date %> </li>
-      <li> End date: <%=booking.end_date  %></li>
-      <li> Delivery Address: <%=booking.delivery_address  %></li>
-      <li> Engine Size :<%= booking.bike.engine_size %> cc</li>
-      <li> Total price: € <%= rental_cost = (booking.end_date - booking.start_date).to_i * booking.bike.price%></li>
-      <li> Booking Status: <%= booking.status %></li>
-    </ul>
+    <h4> <%= booking.bike.brand %> </h4>
+<!--     <ul> -->
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Start date
+          <span class="badge badge-primary badge-pill"><%= booking.start_date %></span>
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          End date
+          <span class="badge badge-primary badge-pill"><%= booking.end_date %></span>
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Delivery address
+          <span class="badge badge-primary badge-pill"><%=booking.delivery_address  %></span>
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Brand
+          <span class="badge badge-primary badge-pill"><%= booking.bike.brand %></span>
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Engine Size
+          <span class="badge badge-primary badge-pill"><%= booking.bike.engine_size %> cc </span>
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Total price
+          <span class="badge badge-primary badge-pill">€ <%=rental_cost = (booking.end_date - booking.start_date).to_i * booking.bike.price%></span>
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Booking Status
+          <span class="badge badge-primary badge-pill"><%= booking.status %></span>
+          </li>
+  </ul>
     <% end %>
   <% end %>
 
@@ -21,15 +50,52 @@
   <% else %>
   <h1>Your booking requests</h1>
     <% @user_bikes.each do |bike| %>
-    <h3><%= bike.brand %></h3>
+    <h4><%= bike.brand %></h4>
     <% bike.bookings.each do |booking| %>
-      <li> Start date: <%= booking.start_date %> </li>
-      <li> End date: <%=booking.end_date  %></li>
-      <li> Delivery Address: <%=booking.delivery_address  %></li>
-      <li> Engine Size :<%= booking.bike.engine_size %> cc</li>
-      <li> Total price: € <%= rental_cost = (booking.end_date - booking.start_date).to_i * booking.bike.price%></li>
-      <li> Booking Status: <%= booking.status %> <%= link_to 'Change status', edit_booking_path(booking)%></li>
-      <p>-----------</p>
+          <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Start date
+          <span class="badge badge-primary badge-pill"><%= booking.start_date %></span>
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          End date
+          <span class="badge badge-primary badge-pill"><%= booking.end_date %></span>
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Delivery address
+          <span class="badge badge-primary badge-pill"><%=booking.delivery_address  %></span>
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Brand
+          <span class="badge badge-primary badge-pill"><%= booking.bike.brand %></span>
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Engine Size
+          <span class="badge badge-primary badge-pill"><%= booking.bike.engine_size %> cc </span>
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Total price
+          <span class="badge badge-primary badge-pill">€ <%=rental_cost = (booking.end_date - booking.start_date).to_i * booking.bike.price%></span>
+        </li>
+
+        <% if booking.bike.user == current_user %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Booking Status
+            <span class="badge badge-primary badge-pill"><%= booking.status %> <%= link_to 'Change status', edit_booking_path(booking)%></span>
+          </li>
+        <% else  %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Booking Status
+            <span class="badge badge-primary badge-pill"><%= booking.status %></span>
+          </li>
+        <% end %>
+      </ul>
+
     <% end %>
   <% end %>
   <% end %>
